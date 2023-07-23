@@ -1,4 +1,4 @@
-## Panoptic Segmentation
+# Panoptic Segmentation
 
 `main.py` is the main file for applying panoptic segmentation on images.
 
