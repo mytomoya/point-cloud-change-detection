@@ -147,6 +147,8 @@ class ReconstructPointCloud:
 
         # Load labels
         label_path = utils.get_label_path(self.root, number)
+        if not label_path.exists():
+            return None
         label = np.load(label_path.as_posix(), allow_pickle=True)
         label = np.rot90(label)
 
@@ -165,6 +167,7 @@ class ReconstructPointCloud:
         """
         n_frames: int = len(list(self.rgb_directory.iterdir()))
         results: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
+        n_frames = min(100, n_frames)
 
         for i in tqdm.tqdm(range(n_frames), desc="[Restore Point Cloud]"):
             result = self.reconstruct(i)
@@ -200,9 +203,6 @@ if __name__ == "__main__":
     # Parse command line arguments
     args = parser.parse_args()
     path = args.path
-    n_samples_per_frame = args.num_samples
-    step = args.step
-    extension = args.extension
 
     if path is None:
         current_directory = pathlib.Path("../../dataset/raw/1/Before")
@@ -210,6 +210,6 @@ if __name__ == "__main__":
         current_directory = pathlib.Path(path)
 
     reconstruct = ReconstructPointCloud(
-        current_directory, n_samples_per_frame, extension, step
+        current_directory, args.num_samples, args.extension, args.step
     )
     reconstruct.run()
