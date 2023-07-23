@@ -167,7 +167,6 @@ class ReconstructPointCloud:
         """
         n_frames: int = len(list(self.rgb_directory.iterdir()))
         results: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
-        n_frames = min(100, n_frames)
 
         for i in tqdm.tqdm(range(n_frames), desc="[Restore Point Cloud]"):
             result = self.reconstruct(i)
