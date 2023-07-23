@@ -1,0 +1,12 @@
+services:
+  app:
+    container_name: point_cloud_change_detection
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    tty: true
+    runtime: nvidia
