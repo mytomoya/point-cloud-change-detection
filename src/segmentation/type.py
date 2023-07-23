@@ -4,9 +4,6 @@ from typing import TypedDict
 
 import torch
 
-# Array2x2 = Annotated[npt.NDArray[np.float32], Literal[2, 2]]
-# StrArray2x2 = list[list[str]]
-
 
 class InputType(TypedDict):
     """Type definition for input image.
