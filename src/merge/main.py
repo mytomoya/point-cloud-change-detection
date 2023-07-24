@@ -178,7 +178,7 @@ class MergeLabel:
 
         # Remove the same instance label pairs
         print(
-            f"Filtering pairs of the same object label {len(point_indices1):,}-> ",
+            f"Filtering pairs of the same object label: {len(point_indices1):,}-> ",
             end="",
         )
         condition = np.where(object_label1 == object_label2)[0]
