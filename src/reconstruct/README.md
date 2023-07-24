@@ -74,13 +74,13 @@ dataset
 │   ├── label_0.npy
 │   ├── label_1.npy
 │   └── ...
-├── PLY
-│   └── point_cloud.ply
+├── point_cloud.ply
 ```
 
 ### Labels
 
-Each point in the point cloud has an object (instance) label attached to it. The list of their labels are saved in `LabelOut` directory.
+Each point in the point cloud has an object (instance) label attached to it. The list of their labels are saved as an `npy` file:
+
 
 ```
 dataset
@@ -100,8 +100,6 @@ dataset
 │   ├── label_0.npy
 │   ├── label_1.npy
 │   └── ...
-├── PLY
-│   └── point_cloud.ply
-├── LabelOut
-│   └── label.npy
+├── point_cloud.ply
+├── label.npy
 ```
