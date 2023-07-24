@@ -127,3 +127,35 @@ def get_unpair_path(dataset_path: pathlib.Path) -> pathlib.Path:
         Path to the `unpair.json` of the dataset.
     """
     return dataset_path / "unpair.json"
+
+
+def get_point_cloud_path(dataset_path: pathlib.Path) -> pathlib.Path:
+    """Get the path to the `point_cloud.ply` of the dataset.
+
+    Parameters
+    ----------
+    dataset_path : pathlib.Path
+        Path to the dataset.
+
+    Returns
+    -------
+    point_cloud_path : pathlib.Path
+        Path to the `point_cloud.ply` of the dataset.
+    """
+    return dataset_path / "PLY" / "point_cloud.ply"
+
+
+def get_label_out_path(dataset_path: pathlib.Path) -> pathlib.Path:
+    """Get the path to the `label.npy` of the dataset.
+
+    Parameters
+    ----------
+    dataset_path : pathlib.Path
+        Path to the dataset.
+
+    Returns
+    -------
+    label_out_path : pathlib.Path
+        Path to the `label.npy` of the dataset.
+    """
+    return dataset_path / "LabelOut" / "label.npy"
