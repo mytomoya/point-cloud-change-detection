@@ -103,5 +103,5 @@ dataset
 ├── PLY
 │   └── point_cloud.ply
 ├── LabelOut
-│   └── label.ply
+│   └── label.npy
 ```
