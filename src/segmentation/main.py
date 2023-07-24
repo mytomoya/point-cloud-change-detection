@@ -34,7 +34,7 @@ warnings.simplefilter("ignore", UserWarning)
 class PanopticSegmentation:
     """Panoptic segmentation class."""
 
-    def __init__(self, dataset_path: pathlib.Path, batch_size: int = 2):
+    def __init__(self, dataset_path: pathlib.Path, batch_size: int = 4):
         # Set path
         self.dataset_path = dataset_path
         self.label_directory = utils.get_label_path(dataset_path)
@@ -88,7 +88,7 @@ class PanopticSegmentation:
         config = get_cfg()
         config.merge_from_file(config_path)
 
-        config.MODEL.DEVICE = "cpu"
+        config.MODEL.DEVICE = "cuda"
         config.MODEL.WEIGHTS = model_url
 
         return config
