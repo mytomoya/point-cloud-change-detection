@@ -1,5 +1,6 @@
 """Utility functions for point cloud processing."""
 
+import copy
 import pathlib
 
 import numpy as np
@@ -40,3 +41,32 @@ def save_point_cloud(
         print_progress=True,
     )
     print("Saved!")
+
+
+def visualize_models(
+    point_cloud1: o3d.geometry.PointCloud,
+    point_cloud2: o3d.geometry.PointCloud,
+    transformation: np.ndarray = np.identity(4),
+    window_name: str = "Point Cloud",
+):
+    """Visualize two point clouds.
+
+    Parameters
+    ----------
+    point_cloud1 : o3d.geometry.PointCloud
+        First point cloud.
+    point_cloud2 : o3d.geometry.PointCloud
+        Second point cloud.
+    transformation : np.ndarray, default np.identity(4)
+        Transformation matrix.
+    window_name : str, default "Point Cloud"
+        Name of the window.
+    """
+    point_cloud1_copy = copy.deepcopy(point_cloud1)
+    point_cloud2_copy = copy.deepcopy(point_cloud2)
+
+    point_cloud1_copy.transform(transformation)
+
+    o3d.visualization.draw_geometries(  # pylint: disable=no-member
+        [point_cloud1_copy, point_cloud2_copy], window_name=window_name
+    )

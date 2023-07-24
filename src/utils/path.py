@@ -129,20 +129,32 @@ def get_unpair_path(dataset_path: pathlib.Path) -> pathlib.Path:
     return dataset_path / "unpair.json"
 
 
-def get_point_cloud_path(dataset_path: pathlib.Path) -> pathlib.Path:
+def get_point_cloud_path(
+    dataset_path: pathlib.Path,
+    kind: Literal["raw", "whole", "registered"] = "raw",
+) -> pathlib.Path:
     """Get the path to the `point_cloud.ply` of the dataset.
 
     Parameters
     ----------
     dataset_path : pathlib.Path
         Path to the dataset.
+    kind : Literal["raw", "whole", "registered"], default "raw"
+        The kind of point cloud to get.
 
     Returns
     -------
     point_cloud_path : pathlib.Path
         Path to the `point_cloud.ply` of the dataset.
     """
-    return dataset_path / "point_cloud.ply"
+    if kind == "raw":
+        file_name = "point_cloud.ply"
+    elif kind == "whole":
+        file_name = "whole_point_cloud.ply"
+    elif kind == "registered":
+        file_name = "registered.ply"
+
+    return dataset_path / file_name
 
 
 def get_label_out_path(dataset_path: pathlib.Path) -> pathlib.Path:
