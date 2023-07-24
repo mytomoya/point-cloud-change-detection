@@ -132,7 +132,7 @@ class MergeLabel:
         )
         end: float = time.perf_counter()
         elapsed = datetime.timedelta(seconds=end - start)
-        print(f"{elapsed} points")
+        print(f"{elapsed = }")
 
         # Filter by threshold
         print(
@@ -218,7 +218,7 @@ class MergeLabel:
 
         end: float = time.perf_counter()
         elapsed = datetime.timedelta(seconds=end - start)
-        print(f"{elapsed}")
+        print(f"{elapsed = }")
 
     def save(self):
         """Saves the renamed labels and the point cloud. The labels are saved in the source
