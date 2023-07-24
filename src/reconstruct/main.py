@@ -25,11 +25,7 @@ class ReconstructPointCloud:
         step: int = 1,
     ):
         self.rgb_directory = utils.get_rgb_path(root)
-        self.label_out_directory = root / "LabelOut"
         self.label_directory = utils.get_label_path(root)
-
-        # Create the directory if it does not exist
-        self.label_out_directory.mkdir(exist_ok=True)
 
         self.root = root
         self.num_samples_per_frame = num_samples_per_frame
@@ -163,7 +159,7 @@ class ReconstructPointCloud:
 
     def run(self):
         """Reconstructs the point cloud from the RGB-D images. The reconstructed point cloud and
-        the labels are saved in the `PLY` and `LabelOut` directories, respectively.
+        the labels are saved as a .ply file and a .npy file, respectively.
         """
         n_frames: int = len(list(self.rgb_directory.iterdir()))
         results: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
@@ -181,7 +177,7 @@ class ReconstructPointCloud:
         labels = np_results[:, 2, :, 0].reshape(-1)
 
         utils.save_point_cloud(point_cloud, colors, self.root)
-        save_path = self.label_out_directory / "label"
+        save_path = self.root / "label"
         np.save(save_path.as_posix(), labels)
 
 

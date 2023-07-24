@@ -29,12 +29,7 @@ def save_point_cloud(
     pcd.points = o3d.utility.Vector3dVector(points)
     pcd.colors = o3d.utility.Vector3dVector(colors)
 
-    ply_directory = root / "PLY"
-
-    # If the `PLY` directory does not exist, create it
-    ply_directory.mkdir(exist_ok=True)
-
-    save_path = ply_directory / save_file
+    save_path = root / save_file
 
     print(f"Saving {save_file}... ", end="")
     o3d.io.write_point_cloud(
