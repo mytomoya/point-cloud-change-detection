@@ -142,7 +142,7 @@ def get_point_cloud_path(dataset_path: pathlib.Path) -> pathlib.Path:
     point_cloud_path : pathlib.Path
         Path to the `point_cloud.ply` of the dataset.
     """
-    return dataset_path / "PLY" / "point_cloud.ply"
+    return dataset_path / "point_cloud.ply"
 
 
 def get_label_out_path(dataset_path: pathlib.Path) -> pathlib.Path:
@@ -158,4 +158,4 @@ def get_label_out_path(dataset_path: pathlib.Path) -> pathlib.Path:
     label_out_path : pathlib.Path
         Path to the `label.npy` of the dataset.
     """
-    return dataset_path / "LabelOut" / "label.npy"
+    return dataset_path / "label.npy"

@@ -9,10 +9,8 @@ The source dataset directory must be organized like this:
 
 ```
 source_dataset
-├── PLY
-│   └── point_cloud.ply
-├── LabelOut
-│   └── label.ply
+├── point_cloud.ply
+├── label.ply
 └── unpair.json
 ```
 
@@ -30,10 +28,8 @@ When two points have the same label and close enough to each other, they are lik
 
 ```
 source_dataset
-├── PLY
-│   └── point_cloud.ply
-├── LabelOut
-│   └── label.ply
+├── point_cloud.ply
+├── label.ply
 ├── merged_label.npy
 └── unpair.json
 ```

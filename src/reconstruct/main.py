@@ -159,7 +159,7 @@ class ReconstructPointCloud:
 
     def run(self):
         """Reconstructs the point cloud from the RGB-D images. The reconstructed point cloud and
-        the labels are saved in the `PLY` and `LabelOut` directories, respectively.
+        the labels are saved as a .ply file and a .npy file, respectively.
         """
         n_frames: int = len(list(self.rgb_directory.iterdir()))
         results: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
