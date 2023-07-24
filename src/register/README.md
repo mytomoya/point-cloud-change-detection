@@ -36,6 +36,7 @@ In addition to the dataset path, you can specify the voxel size used for downsam
 The registered point clouds are saved in the dataset directory as `registered.ply`:
 
 ```
+dataset
 ├── Before
 │   ├── merged_label.npy
 │   ├── registered.ply
