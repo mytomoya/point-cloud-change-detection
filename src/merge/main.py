@@ -132,7 +132,7 @@ class MergeLabel:
         )
         end: float = time.perf_counter()
         elapsed = datetime.timedelta(seconds=end - start)
-        print(f"{elapsed} points")
+        print(f"elapsed: {elapsed}")
 
         # Filter by threshold
         print(
@@ -178,7 +178,7 @@ class MergeLabel:
 
         # Remove the same instance label pairs
         print(
-            f"Filtering pairs of the same object label {len(point_indices1):,}-> ",
+            f"Filtering pairs of the same object label: {len(point_indices1):,}-> ",
             end="",
         )
         condition = np.where(object_label1 == object_label2)[0]
@@ -218,7 +218,7 @@ class MergeLabel:
 
         end: float = time.perf_counter()
         elapsed = datetime.timedelta(seconds=end - start)
-        print(f"{elapsed}")
+        print(f"elapsed: {elapsed}")
 
     def save(self):
         """Saves the renamed labels and the point cloud. The labels are saved in the source
