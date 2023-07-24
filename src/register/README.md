@@ -20,7 +20,7 @@ The default path to the source dataset is set to be the working directory. You c
 
 
 ```
-python main.py -p /path/to/source_dataset
+python main.py -p /path/to/dataset
 ```
 
 
