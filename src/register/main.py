@@ -212,6 +212,6 @@ if __name__ == "__main__":
         path = pathlib.Path(path)
 
     registration = Registration(path, voxel_size=args.size)
-    # registration.visualize(mode="global")
-    # registration.visualize(mode="local")
+    registration.visualize(mode="global")
+    registration.visualize(mode="local")
     registration.save()
