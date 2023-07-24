@@ -10,4 +10,4 @@ from .path import (
     get_rgb_path,
     get_unpair_path,
 )
-from .pcd import save_point_cloud
+from .pcd import save_point_cloud, visualize_models
