@@ -1,6 +1,6 @@
 """Type definitions."""
 
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 import numpy as np
 
@@ -38,3 +38,29 @@ class JsonType(TypedDict):
     intrinsic: np.ndarray
     view_matrix: np.ndarray
     frame_number: int
+
+
+class AnnotationItemType(TypedDict):
+    """Type definition for annotation item.
+
+    id: int
+        ID of the item.
+    object: str
+        Object name.
+    change: Literal["removed", "no change", "]
+        Change type.
+    """
+
+    id: int
+    object: str
+    change: Literal["removed", "no change", ""]
+
+
+class AnnotationType(TypedDict):
+    """Type definition for annotation.
+
+    point_cloud: list[AnnotationItemType]
+        List of annotation items.
+    """
+
+    point_cloud: list[AnnotationItemType]
