@@ -265,7 +265,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-m",
-        "--min_points",
+        "--min",
         help="Minimum number of points.",
         type=int,
     )
@@ -280,5 +280,5 @@ if __name__ == "__main__":
     else:
         root = pathlib.Path(path)
 
-    extraction = Extraction(root, used_labels=labels, min_points=args.min_points)
+    extraction = Extraction(root, used_labels=labels, min_points=args.min)
     extraction.extract()
