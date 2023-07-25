@@ -18,7 +18,7 @@ from detectron2.data import MetadataCatalog
 from detectron2.data import transforms as T
 from detectron2.modeling.meta_arch.panoptic_fpn import PanopticFPN
 
-from src import utils
+from src import Parameter, utils
 from src.segmentation import helper
 from src.segmentation.type import (
     InfoType,
@@ -93,8 +93,14 @@ class PanopticSegmentation:
 
         return config
 
-    def run(self, step: int = 1):
+    def run(self, step: int = Parameter.segmentation_step):
         """Run the panoptic segmentation model.
+
+        Parameters
+        ----------
+        step : int, default Parameter.segmentation_step
+            The step size for the panoptic segmentation. For example, if `step` is 2, the model
+            will run the panoptic segmentation for every 2 frames.
 
         Notes
         -----

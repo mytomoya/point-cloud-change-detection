@@ -13,7 +13,7 @@ import open3d as o3d
 import tqdm
 from sklearn import neighbors
 
-from src import utils
+from src import Parameter, utils
 from src.merge.union_find import UnionFind
 
 
@@ -24,8 +24,8 @@ class MergeLabel:
         self,
         source_path: pathlib.Path,
         out_path: pathlib.Path,
-        n_neighbors: int = 17,
-        distance_threshold: float = 0.02,
+        n_neighbors: int = Parameter.merge_neighbors,
+        distance_threshold: float = Parameter.merge_distance_threshold,
     ):
         """Initialization.
 
@@ -35,9 +35,9 @@ class MergeLabel:
             Path to the source dataset.
         out_path : `pathlib.Path`
             Path to the destination dataset.
-        n_neighbors : `int`, default 17
+        n_neighbors : `int`, default Parameter.merge_neighbors
             Number of neighboring points to consider when merging labels.
-        distance_threshold : `float`, default 0.02
+        distance_threshold : `float`, default Parameter.merge_distance_threshold
             Threshold of distance to consider when merging labels.
         """
 

@@ -20,7 +20,7 @@ class Extraction:
         self,
         root: pathlib.Path,
         used_labels: set[str] | None = None,
-        min_points: int | None = None,
+        min_points: int = Parameter.min_points,
     ):
         """
         Parameters
@@ -29,7 +29,7 @@ class Extraction:
             Path to the processed dataset that contains `Before` and `After` directories.
         used_labels : set[str] | None, default None
             Set of labels that are to be used. Labels not in this set are ignored.
-        min_points : int | None, default None
+        min_points : int, default Parameter.min_points
             Minimum number of points in a point cloud. If point cloud extracted from extracted has
             less points than this value, it is discarded.
         """
@@ -57,7 +57,7 @@ class Extraction:
         self.used_labels = (
             used_labels if used_labels is not None else Parameter.used_labels
         )
-        self.min_points = min_points if min_points is not None else Parameter.min_points
+        self.min_points = min_points
 
     def load_point_cloud_and_label(
         self, dataset_path: pathlib.Path

@@ -9,7 +9,7 @@ from typing import Literal
 import numpy as np
 import tqdm
 
-from src import utils
+from src import Parameter, utils
 from src.reconstruct import constant
 from src.reconstruct.constant import Confidence
 
@@ -20,9 +20,9 @@ class ReconstructPointCloud:
     def __init__(
         self,
         root: pathlib.Path,
-        num_samples_per_frame: int = 5_000,
+        num_samples_per_frame: int = Parameter.num_samples_per_frame,
         extension: Literal["jpg", "png"] = "png",
-        step: int = 1,
+        step: int = Parameter.reconstruction_step,
     ):
         self.rgb_directory = utils.get_rgb_path(root)
         self.label_directory = utils.get_label_path(root)
