@@ -170,48 +170,56 @@ if __name__ == "__main__":
     parser.add_argument("--source", help="Path to the source dataset", type=str)
     parser.add_argument("--dest", help="Path to the destination dataset", type=str)
     parser.add_argument(
+        "-ss",
         "--segmentation_step",
         help="Segmentation step",
         type=int,
         default=Parameter.segmentation_step,
     )
     parser.add_argument(
+        "-n",
         "--num_samples",
         help="Number of samples per frame",
         type=int,
         default=Parameter.num_samples_per_frame,
     )
     parser.add_argument(
+        "-e",
         "--extension",
         help="Image extension",
         type=str,
         default="jpg",
     )
     parser.add_argument(
+        "-rs",
         "--reconstruction_step",
         help="Reconstruction step",
         type=int,
         default=Parameter.reconstruction_step,
     )
     parser.add_argument(
+        "-mn",
         "--merge_neighbors",
         help="Number of neighbors used to merge",
         type=int,
         default=Parameter.merge_neighbors,
     )
     parser.add_argument(
+        "-t",
         "--merge_distance_threshold",
         help="Distance threshold used to merge",
         type=float,
         default=Parameter.merge_distance_threshold,
     )
     parser.add_argument(
+        "-l",
         "--labels",
         help="Labels to be used.",
         nargs="*",
         type=str,
     )
     parser.add_argument(
+        "-m",
         "--min",
         help="Minimum number of points.",
         type=int,
