@@ -52,4 +52,4 @@ RUN /root/.pyenv/shims/poetry config virtualenvs.create false
 RUN if [ -f pyproject.toml ]; then /root/.pyenv/shims/poetry install --no-root; fi
 
 # Install detectron2 (poetry has some issues with detectron2)
-RUN pip install 'git+https://github.com/facebookresearch/detectron2.git'
+RUN /root/.pyenv/shims/pip install 'git+https://github.com/facebookresearch/detectron2.git'
