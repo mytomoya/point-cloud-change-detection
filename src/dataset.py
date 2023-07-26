@@ -217,12 +217,14 @@ if __name__ == "__main__":
         help="Labels to be used.",
         nargs="*",
         type=str,
+        default=Parameter.used_labels,
     )
     parser.add_argument(
         "-m",
         "--min",
         help="Minimum number of points.",
         type=int,
+        default=Parameter.min_points,
     )
 
     # Parse command line arguments
