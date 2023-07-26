@@ -12,7 +12,7 @@ class Parameter:
     reconstruction_step: int = 1
 
     # Merge
-    merge_neighbors: int = 17
+    merge_neighbors: int = 30
     merge_distance_threshold: float = 0.02
 
     # Extract
