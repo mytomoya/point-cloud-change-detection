@@ -38,6 +38,20 @@ dataset
 You can get the dataset with [RGB-D Scan with ARKit](https://github.com/Tomoya-Matsubara/RGB-D-Scan-with-ARKit).
 
 
+If your dataset is composed of multiple scenes, you can organize your dataset as follows:
+
+```
+dataset
+├── 1
+│   ├── Before
+│   └── After
+├── 2
+│   ├── Before
+│   └── After
+```
+
+
+
 With the dataset prepared, run the following command to create the dataset to apply preprocessing.
 
 ```bash
