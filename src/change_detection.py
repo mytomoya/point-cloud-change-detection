@@ -1,3 +1,5 @@
+"""Change detection."""
+
 import pathlib
 from argparse import ArgumentParser
 
