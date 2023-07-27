@@ -43,11 +43,11 @@ class Extraction:
         (
             self.point_cloud_before,
             self.labels_before,
-        ) = self.load_point_cloud_and_label(self.before_path)
+        ) = utils.load_point_cloud_and_label(self.before_path)
         (
             self.point_cloud_after,
             self.labels_after,
-        ) = self.load_point_cloud_and_label(self.after_path)
+        ) = utils.load_point_cloud_and_label(self.after_path)
 
         self.points_before = np.array(self.point_cloud_before.points)
         self.colors_before = np.array(self.point_cloud_before.colors)
@@ -58,30 +58,6 @@ class Extraction:
             used_labels if used_labels is not None else Parameter.used_labels
         )
         self.min_points = min_points
-
-    def load_point_cloud_and_label(
-        self, dataset_path: pathlib.Path
-    ) -> tuple[o3d.geometry.PointCloud, np.ndarray]:
-        """Loads the point cloud and label from the processed dataset.
-
-        Parameters
-        ----------
-        dataset_path : pathlib.Path
-            Path to the point cloud and label.
-
-        Returns
-        -------
-        point_cloud : o3d.geometry.PointCloud
-            Point cloud.
-        label : np.ndarray
-            Label.
-        """
-
-        point_cloud_path = utils.get_point_cloud_path(dataset_path, kind="registered")
-        point_cloud = o3d.io.read_point_cloud(point_cloud_path.as_posix())
-        label = np.load(dataset_path / "merged_label.npy", allow_pickle=True)
-
-        return point_cloud, label
 
     def extract_with_label(
         self, instance_label: str
