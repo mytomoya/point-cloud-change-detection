@@ -166,7 +166,6 @@ def main(root: pathlib.Path, n_neighbors: int, threshold: float):
     all_colors_after: np.ndarray | None = None
     all_points_before: np.ndarray | None = None
     all_points_after: np.ndarray | None = None
-    import time
 
     with tqdm.tqdm(range(number)) as progress_bar:
         for number in progress_bar:
@@ -180,7 +179,6 @@ def main(root: pathlib.Path, n_neighbors: int, threshold: float):
                 ChangeType.REMOVE if match_rate < threshold else ChangeType.NO_CHANGE
             )
             y_prediction.append(result)
-            # time.sleep(0.5)
 
             # Load the point cloud for the first time
             if all_points_before is None:
@@ -199,8 +197,7 @@ def main(root: pathlib.Path, n_neighbors: int, threshold: float):
                 all_colors_before,
                 all_colors_after,
                 result,
-                # y_true[number],
-                ChangeType.REMOVE,
+                y_true[number],
             )
 
         # Save the colored point clouds
@@ -219,8 +216,6 @@ def main(root: pathlib.Path, n_neighbors: int, threshold: float):
                 "colored.ply",
             )
 
-    # y_true = y_true[len(y_prediction)]
-    y_true = np.ones_like(y_prediction)
     confusion_matrix = metrics.confusion_matrix(y_true, y_prediction)
     print(confusion_matrix)
     classification_report = metrics.classification_report(y_true, y_prediction)
