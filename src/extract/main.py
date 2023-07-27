@@ -201,10 +201,9 @@ class Extraction:
         index : int
             Point cloud number.
         """
-
         ply_path = dataset_path / "PLY" / f"{index}.ply"
         label_path = dataset_path / "Label" / f"{index}"
-        index_path = dataset_path / "Index" / f"{index}.npy"
+        index_path = dataset_path / "Index" / f"{index}"
 
         # Create directories if they do not exist
         ply_path.parent.mkdir(parents=True, exist_ok=True)
