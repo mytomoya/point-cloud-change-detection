@@ -26,3 +26,7 @@ class Parameter:
         "cell phone",
     }
     min_points: int = 1_000
+
+    # Change detection
+    cd_neighbors: int = 30
+    cd_threshold: float = 0.1

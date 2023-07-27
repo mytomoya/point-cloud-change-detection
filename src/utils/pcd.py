@@ -154,7 +154,11 @@ def load_point_cloud_and_label(
         point_cloud_path = dataset_path / "PLY" / f"{number}.ply"
         label_path = dataset_path / "Label" / f"{number}.npy"
 
-    point_cloud = o3d.io.read_point_cloud(point_cloud_path.as_posix())
-    label = np.load(label_path, allow_pickle=True)
+    if not point_cloud_path.exists():
+        point_cloud = o3d.geometry.PointCloud()
+        label = np.array([])
+    else:
+        point_cloud = o3d.io.read_point_cloud(point_cloud_path.as_posix())
+        label = np.load(label_path, allow_pickle=True)
 
     return point_cloud, label
