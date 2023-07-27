@@ -97,3 +97,13 @@ python change_detection.py \
 - `-t` or `--threshold`: Distance threshold for the change detection.
 
 The result will be saved as a confusion matrix with the name `confusion_matrix.svg`.
+
+Besides, the point clouds from `Before` and `After` will be colored based on the change detection result and saved as `colored.ply` under the `Before` and `After` directories, respectively. There are four colors:
+
+![](../assets/color.svg)
+
+
+- **Cyan**: True positive. The point cloud is removed and the prediction is correct.
+- **Green**: False positive. The point cloud is not removed but the prediction is incorrect.
+- **Magenta**: False negative (miss). The point cloud is removed but the prediction is incorrect.
+- **Red**: True negative. The point cloud is not removed and the prediction is correct.
