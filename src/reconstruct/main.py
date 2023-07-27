@@ -183,7 +183,7 @@ class ReconstructPointCloud:
 
 if __name__ == "__main__":
     # Setup command line arguments
-    parser = ArgumentParser(description="Panoptic Segmentation")
+    parser = ArgumentParser(description="Reconstruct point cloud from the dataset.")
     parser.add_argument("-p", "--path", help="Path to the dataset", type=str)
     parser.add_argument(
         "-n",

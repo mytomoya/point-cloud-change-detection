@@ -225,7 +225,7 @@ class Extraction:
 
 if __name__ == "__main__":
     # Setup command line arguments
-    parser = ArgumentParser(description="Panoptic Segmentation")
+    parser = ArgumentParser(description="Extract point clouds from the dataset.")
     parser.add_argument(
         "-p",
         "--path",

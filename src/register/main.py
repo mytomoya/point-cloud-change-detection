@@ -193,7 +193,7 @@ class Registration:
 
 if __name__ == "__main__":
     # Setup command line arguments
-    parser = ArgumentParser(description="Panoptic Segmentation")
+    parser = ArgumentParser(description="Register two point clouds.")
     parser.add_argument(
         "-p",
         "--path",
