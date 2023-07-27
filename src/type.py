@@ -1,5 +1,6 @@
 """Type definitions."""
 
+from enum import IntEnum
 from typing import Literal, TypedDict
 
 import numpy as np
@@ -64,3 +65,12 @@ class AnnotationType(TypedDict):
     """
 
     point_cloud: list[AnnotationItemType]
+
+
+class ChangeType(IntEnum):
+    """Type definition for change type. There are two types of change: no
+    change and remove.
+    """
+
+    NO_CHANGE = 0
+    REMOVE = 1

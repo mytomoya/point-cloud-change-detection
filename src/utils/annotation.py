@@ -1,16 +1,7 @@
 import json
 import pathlib
 
-import numpy as np
-import open3d as o3d
-
-from src.type import AnnotationItemType, AnnotationType
-
-# from ._type import ItemType, JsonDataType, LabelsType
-
-# ==============================================================================
-# Annotation file manipulation
-# ==============================================================================
+from src.type import AnnotationItemType, AnnotationType, ChangeType
 
 
 def load(path: pathlib.Path, create: bool = True) -> AnnotationType:
@@ -77,3 +68,33 @@ def save(path: pathlib.Path, json_data: AnnotationType):
 
     with open(path, mode="w", encoding="utf-8") as json_file:
         json.dump(json_data, json_file, indent=4)
+
+
+def get_ground_truth(dataset_path: pathlib.Path) -> list[ChangeType]:
+    """Get the ground truth from the annotation file.
+
+    Parameters
+    ----------
+    dataset_path : pathlib.Path
+        Path to the dataset. The annotation file is located in the dataset.
+
+    Returns
+    -------
+    y_true : list[ChangeType]
+        Ground truth. 1 if the point cloud is removed, 0 otherwise.
+    """
+    annotation_path = dataset_path / "annotation.json"
+    if not annotation_path.exists():
+        raise FileNotFoundError(f"{annotation_path.name} does not exist.")
+
+    y_true: list[ChangeType] = []
+    json_data = load(annotation_path, create=False)
+    data = json_data["point_cloud"]
+
+    n_items: int = len(data)
+    for i in range(n_items):
+        y_true.append(
+            ChangeType.REMOVE if data[i]["change"] == "remove" else ChangeType.NO_CHANGE
+        )
+
+    return y_true

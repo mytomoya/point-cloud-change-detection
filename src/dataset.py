@@ -168,7 +168,9 @@ if __name__ == "__main__":
     # Setup command line arguments
     parser = ArgumentParser(description="Panoptic Segmentation")
     parser.add_argument("--source", help="Path to the source dataset", type=str)
-    parser.add_argument("--dest", help="Path to the destination dataset", type=str)
+    parser.add_argument(
+        "--destination", help="Path to the destination dataset", type=str
+    )
     parser.add_argument(
         "-ss",
         "--segmentation_step",
@@ -230,7 +232,7 @@ if __name__ == "__main__":
     # Parse command line arguments
     args = parser.parse_args()
     source = args.source
-    destination = args.dest
+    destination = args.destination
 
     if source is None:
         source_path = pathlib.Path("../dataset/raw")

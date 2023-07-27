@@ -1,6 +1,7 @@
 """Utility package."""
 
 from . import annotation
+from .color import CYAN, GREEN, MAGENTA, RED
 from .image import get_parameters, load_images
 from .label import get_object_label
 from .path import (
@@ -12,4 +13,9 @@ from .path import (
     get_rgb_path,
     get_unpair_path,
 )
-from .pcd import create_point_cloud, save_point_cloud, visualize_models
+from .pcd import (
+    create_point_cloud,
+    load_point_cloud_and_label,
+    save_point_cloud,
+    visualize_models,
+)

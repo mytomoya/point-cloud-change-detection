@@ -246,7 +246,7 @@ class MergeLabel:
 
 if __name__ == "__main__":
     # Setup command line arguments
-    parser = ArgumentParser(description="Instance Segmentation")
+    parser = ArgumentParser(description="Merge instance labels.")
     parser.add_argument("-p", "--path", help="Path to the source dataset", type=str)
     parser.add_argument("-o", "--out", help="Path to the destination dataset", type=str)
     parser.add_argument(

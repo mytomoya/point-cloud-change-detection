@@ -6,6 +6,8 @@ import pathlib
 import numpy as np
 import open3d as o3d
 
+from src import utils
+
 
 def create_point_cloud(
     points: np.ndarray, colors: np.ndarray
@@ -121,3 +123,42 @@ def get_boundary(
     maximum = points.max(axis=0)
 
     return minimum, maximum
+
+
+def load_point_cloud_and_label(
+    dataset_path: pathlib.Path, number: int | None = None
+) -> tuple[o3d.geometry.PointCloud, np.ndarray]:
+    """Loads the point cloud and label from the processed dataset. If `number` is None,
+    load the whole registered point cloud. Otherwise, load the `number`-th point cloud.
+
+    Parameters
+    ----------
+    dataset_path : pathlib.Path
+        Path to the point cloud and label.
+    number : int | None, default None
+        Number of the point cloud to load. If None, load the whole registered point cloud.
+        Otherwise, load the `number`-th point cloud.
+
+    Returns
+    -------
+    point_cloud : o3d.geometry.PointCloud
+        Point cloud.
+    label : np.ndarray
+        Label.
+    """
+
+    if number is None:
+        point_cloud_path = utils.get_point_cloud_path(dataset_path, kind="registered")
+        label_path = dataset_path / "merged_label.npy"
+    else:
+        point_cloud_path = dataset_path / "PLY" / f"{number}.ply"
+        label_path = dataset_path / "Label" / f"{number}.npy"
+
+    if not point_cloud_path.exists():
+        point_cloud = o3d.geometry.PointCloud()
+        label = np.array([])
+    else:
+        point_cloud = o3d.io.read_point_cloud(point_cloud_path.as_posix())
+        label = np.load(label_path, allow_pickle=True)
+
+    return point_cloud, label

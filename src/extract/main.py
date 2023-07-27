@@ -43,11 +43,11 @@ class Extraction:
         (
             self.point_cloud_before,
             self.labels_before,
-        ) = self.load_point_cloud_and_label(self.before_path)
+        ) = utils.load_point_cloud_and_label(self.before_path)
         (
             self.point_cloud_after,
             self.labels_after,
-        ) = self.load_point_cloud_and_label(self.after_path)
+        ) = utils.load_point_cloud_and_label(self.after_path)
 
         self.points_before = np.array(self.point_cloud_before.points)
         self.colors_before = np.array(self.point_cloud_before.colors)
@@ -58,30 +58,6 @@ class Extraction:
             used_labels if used_labels is not None else Parameter.used_labels
         )
         self.min_points = min_points
-
-    def load_point_cloud_and_label(
-        self, dataset_path: pathlib.Path
-    ) -> tuple[o3d.geometry.PointCloud, np.ndarray]:
-        """Loads the point cloud and label from the processed dataset.
-
-        Parameters
-        ----------
-        dataset_path : pathlib.Path
-            Path to the point cloud and label.
-
-        Returns
-        -------
-        point_cloud : o3d.geometry.PointCloud
-            Point cloud.
-        label : np.ndarray
-            Label.
-        """
-
-        point_cloud_path = utils.get_point_cloud_path(dataset_path, kind="registered")
-        point_cloud = o3d.io.read_point_cloud(point_cloud_path.as_posix())
-        label = np.load(dataset_path / "merged_label.npy", allow_pickle=True)
-
-        return point_cloud, label
 
     def extract_with_label(
         self, instance_label: str
@@ -225,10 +201,9 @@ class Extraction:
         index : int
             Point cloud number.
         """
-
         ply_path = dataset_path / "PLY" / f"{index}.ply"
         label_path = dataset_path / "Label" / f"{index}"
-        index_path = dataset_path / "Index" / f"{index}.npy"
+        index_path = dataset_path / "Index" / f"{index}"
 
         # Create directories if they do not exist
         ply_path.parent.mkdir(parents=True, exist_ok=True)
@@ -249,7 +224,7 @@ class Extraction:
 
 if __name__ == "__main__":
     # Setup command line arguments
-    parser = ArgumentParser(description="Panoptic Segmentation")
+    parser = ArgumentParser(description="Extract point clouds from the dataset.")
     parser.add_argument(
         "-p",
         "--path",

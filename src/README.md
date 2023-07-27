@@ -79,3 +79,31 @@ For each preprocessing step, refer to the following `README.md` files:
 1. [Extract Point Clouds](./extract)
 
 Instead of running the whole process at once, you can run each step separately. For more information, refer to the above links.
+
+
+## Change Detection
+
+Once you have prepared the dataset, you can run the change detection with the following command:
+
+```bash
+python change_detection.py \
+    --path /path/to/processed-dataset \
+    --neighbors 10 \
+    --threshold 0.01 \
+```
+
+- `-p` or `--path`: Path to the processed dataset. It should contain the `Before` and `After` directories.
+- `-n` or `--neighbors`: Number of neighbors to use for the change detection.
+- `-t` or `--threshold`: Distance threshold for the change detection.
+
+The result will be saved as a confusion matrix with the name `confusion_matrix.svg`.
+
+Besides, the point clouds from `Before` and `After` will be colored based on the change detection result and saved as `colored.ply` under the `Before` and `After` directories, respectively. There are four colors:
+
+![](../assets/color.svg)
+
+
+- **Cyan**: True positive. The point cloud is removed and the prediction is correct.
+- **Green**: False positive. The point cloud is not removed but the prediction is incorrect.
+- **Magenta**: False negative (miss). The point cloud is removed but the prediction is incorrect.
+- **Red**: True negative. The point cloud is not removed and the prediction is correct.
