@@ -1,14 +1,23 @@
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
 ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV HOME /root
-ENV PYENV_ROOT $HOME/.pyenv
-ENV PATH $PYENV_ROOT/bin:$PATH
-ARG PYTHON_VERSION="3.10.1"
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
 
-ARG work_dir="/app"
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
 WORKDIR ${work_dir}
 
 RUN apt update
@@ -32,16 +41,22 @@ RUN apt install -y          \
     tk-dev
 
 # Install pyenv
-RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc    && \
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc && \
-    echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pye
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.\\
 
-RUN eval "$(pyenv init --path)"
 
-# Install and set Python version
-RUN pyenv install $PYTHON_VERSION && \
-    pyenv global $PYTHON_VERSION
+
+
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+
+v
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
+
+Actually, you want me only for sex friend, you never really love me. when you told me "love me" you lie always.
 
 # Install poetry
 RUN /root/.pyenv/shims/pip install poetry
